@@ -4,10 +4,13 @@ const {getAirtableData, sendForm } = require('../../airtableService');
 const { authenticateMiddleware } = require('./middleware.js');
 
 
+router.get('/', (req, res) => {
+  res.send('Hola Mundo!');
+});
+
 router.get('/formulario', (req, res) => {
   res.send('Welcome to the home page');
 });
-
 
 router.get('/getAirtableData', async (req, res) => {
   try {
