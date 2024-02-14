@@ -78,6 +78,10 @@ const corsOptions = {
 };
 
 server.use(cors(corsOptions));
+
+server.use(cors({
+  origin: 'https://irichallenge.vercel.app'
+}));
 server.use(morgan('combined'));
 server.use(bodyParser.json());
 
