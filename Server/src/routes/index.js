@@ -3,7 +3,6 @@ const router = express.Router();
 const {getAirtableData, sendForm } = require('../../airtableService');
 const { authenticateMiddleware } = require('./middleware.js');
 
-
 router.get('/', (req, res) => {
   res.send('Hola Mundo!');
 });
@@ -21,26 +20,6 @@ router.get('/getAirtableData', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
-
-
-// router.post('/authenticate', async (req, res) => {
-//   const { email, password } = req.body;
-//   try {
-//     const records = await getAirtableData();
-//     const foundRecord = records.find(
-//       (record) => record.get('Email') === email && record.get('Password') === password
-//     );
-//     if (foundRecord) {
-//       res.status(200).json({ success: true, message: 'Authentication successful' });
-//     } else {
-//       res.status(404).json({ success: false, message: 'Authentication failed' });
-//     }
-//   } catch (error) {
-//     console.error('Error fetching Airtable data:', error);
-//     res.status(500).json({ success: false, message: 'Internal server error' });
-//   }
-// });
 
 router.post('/authenticate', async (req, res) => {
   const { email, password } = req.body;
@@ -76,3 +55,21 @@ router.post('/sendForm', async (req, res) => {
 
 
 module.exports = router;
+
+// router.post('/authenticate', async (req, res) => {
+//   const { email, password } = req.body;
+//   try {
+//     const records = await getAirtableData();
+//     const foundRecord = records.find(
+//       (record) => record.get('Email') === email && record.get('Password') === password
+//     );
+//     if (foundRecord) {
+//       res.status(200).json({ success: true, message: 'Authentication successful' });
+//     } else {
+//       res.status(404).json({ success: false, message: 'Authentication failed' });
+//     }
+//   } catch (error) {
+//     console.error('Error fetching Airtable data:', error);
+//     res.status(500).json({ success: false, message: 'Internal server error' });
+//   }
+// });
