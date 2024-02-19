@@ -73,20 +73,16 @@ const PORT = process.env.PORT || 3000;
 
 const server = express();
 
-// const corsOptions = {
-//   origin: 'http://localhost:5173',
-// };
+const corsOptions = {
+  origin: 'http://localhost:5173',
+};
 
-// server.use(cors(corsOptions));
+server.use(cors(corsOptions));
 
-server.use(cors({
-  origin: 'https://irichallenge.vercel.app'
-}));
 server.use(morgan('combined'));
 server.use(bodyParser.json());
 
-server.options('*', cors());
-// server.options('*', cors(corcorssOptions));
+server.options('*', cors(corsOptions));
 
 server.use(session({
   secret: 'mATEO',
