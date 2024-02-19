@@ -74,7 +74,7 @@ const PORT = process.env.PORT || 3000;
 const server = express();
 
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173', 'https://irichallenge.vercel.app']
 };
 
 server.use(cors(corsOptions));
